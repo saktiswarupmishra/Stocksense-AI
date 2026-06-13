@@ -1,0 +1,38 @@
+name: CD Pipeline
+
+on:
+  workflow_run:
+    workflows: ["CI Pipeline"]
+    types: [completed]
+    branches: [main]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: us-east-1
+
+      - name: Login to Amazon ECR
+        uses: aws-actions/amazon-ecr-login@v2
+
+      - name: Update kubeconfig
+        run: aws eks update-kubeconfig --name stocksense-cluster --region us-east-1
+
+      - name: Deploy to EKS
+        run: |
+          kubectl apply -f infra/k8s/namespace.yml
+          kubectl apply -f infra/k8s/ingress.yml
+          kubectl apply -f infra/k8s/frontend-deployment.yml
+          kubectl apply -f infra/k8s/backend-deployment.yml
+          kubectl apply -f infra/k8s/ai-service-deployment.yml
+          kubectl rollout status deployment/frontend -n stocksense --timeout=120s
+          kubectl rollout status deployment/backend -n stocksense --timeout=120s
+          kubectl rollout status deployment/ai-service -n stocksense --timeout=120s

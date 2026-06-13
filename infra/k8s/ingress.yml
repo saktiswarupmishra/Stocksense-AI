@@ -1,0 +1,69 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: stocksense-ingress
+  namespace: stocksense
+  annotations:
+    nginx.ingress.kubernetes.io/ssl-redirect: "true"
+    nginx.ingress.kubernetes.io/proxy-body-size: "50m"
+    cert-manager.io/cluster-issuer: letsencrypt-prod
+spec:
+  ingressClassName: nginx
+  tls:
+    - hosts:
+        - stocksense.ai
+        - api.stocksense.ai
+      secretName: stocksense-tls
+  rules:
+    - host: stocksense.ai
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: frontend-service
+                port:
+                  number: 3000
+    - host: api.stocksense.ai
+      http:
+        paths:
+          - path: /api
+            pathType: Prefix
+            backend:
+              service:
+                name: backend-service
+                port:
+                  number: 8080
+          - path: /ws
+            pathType: Prefix
+            backend:
+              service:
+                name: backend-service
+                port:
+                  number: 8080
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: stocksense-config
+  namespace: stocksense
+data:
+  API_URL: "https://api.stocksense.ai"
+  MONGODB_URI: "mongodb://mongodb-service:27017/stocksense"
+  REDIS_HOST: "redis-service"
+  REDIS_PORT: "6379"
+  KAFKA_SERVERS: "kafka-service:9092"
+  AI_SERVICE_URL: "http://ai-service:8000"
+  CORS_ORIGINS: "https://stocksense.ai"
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: stocksense-secrets
+  namespace: stocksense
+type: Opaque
+stringData:
+  JWT_SECRET: "change-this-to-a-real-256-bit-secret-in-production"
+  GOOGLE_CLIENT_ID: "your-google-client-id"
+  GOOGLE_CLIENT_SECRET: "your-google-client-secret"
