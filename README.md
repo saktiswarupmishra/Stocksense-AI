@@ -2,7 +2,7 @@
 
 **AI-Powered Stock Market Analysis & Portfolio Management Platform**
 
-[![CI Pipeline](https://iconscout.com/illustration/employee-have-idea-fro-devops-application-illustration_12458473)](https://github.com/your-org/stocksense-ai/actions)
+[![CI Pipeline](https://github.com/your-org/stocksense-ai/actions/workflows/ci.yml/badge.svg)](https://github.com/your-org/stocksense-ai/actions)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 
 ![Next.js](https://img.shields.io/badge/Next.js_14-black?logo=next.js)
