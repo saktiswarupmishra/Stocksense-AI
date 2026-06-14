@@ -13,7 +13,7 @@
 </p>
 
 <p align="center">
-  <a href="https://github.com/your-org/stocksense-ai/actions"><img src="https://github.com/your-org/stocksense-ai/actions/workflows/ci.yml/badge.svg" alt="CI Pipeline"/></a>
+  <a href="https://github.com/saktiswarupmishra/Stocksense-AI/actions"><img src="https://github.com/saktiswarupmishra/Stocksense-AI/actions/workflows/ci.yml/badge.svg" alt="CI Pipeline"/></a>
   <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-blue.svg?style=flat-square" alt="License: MIT"/></a>
   <img src="https://img.shields.io/badge/PRs-Welcome-brightgreen.svg?style=flat-square" alt="PRs Welcome"/>
   <img src="https://img.shields.io/badge/Version-1.0.0-orange.svg?style=flat-square" alt="Version"/>
