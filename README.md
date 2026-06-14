@@ -154,7 +154,7 @@ StockSense AI is a **production-ready**, full-stack platform combining **real-ti
 | Requirement | Version |
 |-------------|---------|
 | 🐳 Docker & Docker Compose | Latest |
-| 🟢 Next.js | 16.2+ |
+| 🟢 Next.js | 14+ |
 | ☕ Java (JDK) | 17+ |
 | 🐍 Python | 3.11+ |
 
@@ -349,7 +349,7 @@ MIT License — see [LICENSE](LICENSE) for details.
 ---
 
 <p align="center">
-  <strong>Built with ❤️ by StockSense AI Team</strong>
+  <strong>Built with ❤️ by StockSense AI Team(Sakti Swarup Mishra....)</strong>
 </p>
 
 <p align="center">
