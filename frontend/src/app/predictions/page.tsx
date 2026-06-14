@@ -1,10 +1,10 @@
 'use client';
 
 import { useState } from 'react';
-import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Area, AreaChart } from 'recharts';
+import { Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Area, AreaChart } from 'recharts';
 import { CpuChipIcon, ArrowTrendingUpIcon, ArrowTrendingDownIcon } from '@heroicons/react/24/outline';
 
-const generatePrediction = (model: string) => {
+const generatePrediction = (_model: string) => {
   const data = [];
   let price = 189.84;
   for (let i = -30; i <= 30; i++) {

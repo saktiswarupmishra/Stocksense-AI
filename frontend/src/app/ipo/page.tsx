@@ -1,6 +1,6 @@
 'use client';
 
-import { RocketLaunchIcon, ArrowTrendingUpIcon } from '@heroicons/react/24/outline';
+import { RocketLaunchIcon } from '@heroicons/react/24/outline';
 
 const ipos = [
   { company: 'QuantumAI Labs', symbol: 'QAIL', sector: 'Technology', priceRange: '$28-32', date: 'Jun 20', score: 8.7, rec: 'Strong Buy', valuation: '4.2B', status: 'UPCOMING' },

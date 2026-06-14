@@ -1,6 +1,6 @@
 'use client';
 
-import { UserGroupIcon, ArrowTrendingUpIcon, ArrowTrendingDownIcon } from '@heroicons/react/24/outline';
+import { UserGroupIcon } from '@heroicons/react/24/outline';
 
 const trades = [
   { insider: 'Tim Cook', title: 'CEO', company: 'Apple Inc.', symbol: 'AAPL', type: 'SELL', shares: 75000, price: 188.50, total: 14137500, date: 'Jun 10, 2024' },
