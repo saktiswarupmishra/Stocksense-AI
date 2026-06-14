@@ -2,6 +2,54 @@
 
 @custom-variant dark (&:is(.dark *));
 
+@theme {
+  --font-sans: 'Inter', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+
+  --color-primary-50: #eef2ff;
+  --color-primary-100: #e0e7ff;
+  --color-primary-200: #c7d2fe;
+  --color-primary-300: #a5b4fc;
+  --color-primary-400: #818cf8;
+  --color-primary-500: #6366f1;
+  --color-primary-600: #4f46e5;
+  --color-primary-700: #4338ca;
+  --color-primary-800: #3730a3;
+  --color-primary-900: #312e81;
+
+  --color-accent-400: #34d399;
+  --color-accent-500: #10b981;
+  --color-accent-600: #059669;
+
+  --color-gain: #10b981;
+  --color-loss: #ef4444;
+
+  --color-surface-50: #f8fafc;
+  --color-surface-100: #f1f5f9;
+  --color-surface-200: #e2e8f0;
+  --color-surface-700: #1e293b;
+  --color-surface-800: #0f172a;
+  --color-surface-900: #020617;
+
+  --animate-fade-in: fadeIn 0.5s ease-out;
+  --animate-slide-up: slideUp 0.4s ease-out;
+  --animate-pulse-soft: pulseSoft 2s infinite;
+
+  @keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+  }
+  @keyframes slideUp {
+    0% { opacity: 0; transform: translateY(20px); }
+    100% { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes pulseSoft {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.7; }
+  }
+}
+
+/* ── CSS Variables for theme switching ── */
 :root {
   --background: #f8fafc;
   --foreground: #0f172a;
@@ -28,9 +76,7 @@
   --muted-bg: #1e293b;
 }
 
-* {
-  box-sizing: border-box;
-}
+* { box-sizing: border-box; }
 
 body {
   font-family: 'Inter', system-ui, sans-serif;
@@ -39,7 +85,7 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-/* Glassmorphism card */
+/* ── Glassmorphism card ── */
 .glass-card {
   background: var(--card-bg);
   border: 1px solid var(--card-border);
@@ -47,14 +93,13 @@ body {
   backdrop-filter: blur(12px);
   transition: all 0.3s ease;
 }
-
 .glass-card:hover {
   border-color: var(--primary);
   box-shadow: 0 0 0 1px var(--primary), 0 8px 32px -8px rgba(99, 102, 241, 0.15);
   transform: translateY(-2px);
 }
 
-/* Gradient text */
+/* ── Gradient text ── */
 .gradient-text {
   background: linear-gradient(135deg, #6366f1, #8b5cf6, #a855f7);
   -webkit-background-clip: text;
@@ -62,50 +107,32 @@ body {
   background-clip: text;
 }
 
-/* Scrollbar */
-::-webkit-scrollbar {
-  width: 6px;
-}
+/* ── Scrollbar ── */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #475569; border-radius: 3px; }
 
-::-webkit-scrollbar-track {
-  background: transparent;
-}
-
-::-webkit-scrollbar-thumb {
-  background: #475569;
-  border-radius: 3px;
-}
-
-/* Price animations */
-.price-up {
-  animation: priceFlash 0.6s ease;
-  color: var(--gain);
-}
-
-.price-down {
-  animation: priceFlash 0.6s ease;
-  color: var(--loss);
-}
-
+/* ── Price animations ── */
+.price-up { animation: priceFlash 0.6s ease; color: var(--gain); }
+.price-down { animation: priceFlash 0.6s ease; color: var(--loss); }
 @keyframes priceFlash {
   0% { background-color: transparent; }
   30% { background-color: rgba(16, 185, 129, 0.15); }
   100% { background-color: transparent; }
 }
 
-/* Loading skeleton */
+/* ── Skeleton loader ── */
 .skeleton {
   background: linear-gradient(90deg, var(--muted-bg) 25%, transparent 50%, var(--muted-bg) 75%);
   background-size: 200% 100%;
   animation: shimmer 2s infinite linear;
 }
-
 @keyframes shimmer {
   0% { background-position: -200% 0; }
   100% { background-position: 200% 0; }
 }
 
-/* Sidebar */
+/* ── Sidebar ── */
 .sidebar-link {
   display: flex;
   align-items: center;
@@ -117,12 +144,10 @@ body {
   color: var(--muted);
   transition: all 0.2s ease;
 }
-
 .sidebar-link:hover {
   background: var(--muted-bg);
   color: var(--foreground);
 }
-
 .sidebar-link.active {
   background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(139, 92, 246, 0.1));
   color: var(--primary);
