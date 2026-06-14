@@ -154,7 +154,7 @@ StockSense AI is a **production-ready**, full-stack platform combining **real-ti
 | Requirement | Version |
 |-------------|---------|
 | 🐳 Docker & Docker Compose | Latest |
-| 🟢 Node.js | 18+ |
+| 🟢 Next.js | 16.2+ |
 | ☕ Java (JDK) | 17+ |
 | 🐍 Python | 3.11+ |
 
