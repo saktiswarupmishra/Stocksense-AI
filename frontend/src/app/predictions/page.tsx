@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Area, AreaChart } from 'recharts';
 import { CpuChipIcon, ArrowTrendingUpIcon, ArrowTrendingDownIcon } from '@heroicons/react/24/outline';
 
-const generatePrediction = (_model: string) => {
+const generatePrediction = () => {
   const data = [];
   let price = 189.84;
   for (let i = -30; i <= 30; i++) {
@@ -24,7 +24,7 @@ const generatePrediction = (_model: string) => {
 export default function PredictionsPage() {
   const [symbol] = useState('AAPL');
   const [model, setModel] = useState<'lstm' | 'transformer'>('lstm');
-  const data = generatePrediction(model);
+  const data = generatePrediction();
 
   return (
     <div className="space-y-6 animate-fade-in">
