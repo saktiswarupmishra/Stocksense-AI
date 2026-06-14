@@ -1,13 +1,15 @@
 package com.stocksense.controller;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.stocksense.model.Stock;
 import com.stocksense.service.StockService;
 import org.junit.jupiter.api.Test;
+import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.mock.bean.MockBean;
+import org.springframework.boot.test.context.TestConfiguration;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Primary;
 import org.springframework.test.web.servlet.MockMvc;
 
 import java.math.BigDecimal;
@@ -21,8 +23,17 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @AutoConfigureMockMvc(addFilters = false)
 class StockControllerTest {
 
+    @TestConfiguration
+    static class MockConfig {
+        @Bean
+        @Primary
+        public StockService stockService() {
+            return Mockito.mock(StockService.class);
+        }
+    }
+
     @Autowired private MockMvc mockMvc;
-    @MockBean private StockService stockService;
+    @Autowired private StockService stockService;
 
     @Test
     void searchStocks_ReturnsResults() throws Exception {
