@@ -1,6 +1,6 @@
 'use client';
 
-import { EyeIcon, BellIcon, PlusIcon, TrashIcon } from '@heroicons/react/24/outline';
+import { EyeIcon, BellIcon, PlusIcon } from '@heroicons/react/24/outline';
 import { ArrowTrendingUpIcon, ArrowTrendingDownIcon } from '@heroicons/react/24/outline';
 
 const watchlists = [
